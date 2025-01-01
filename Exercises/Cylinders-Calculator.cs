@@ -3,7 +3,7 @@ int h;
 double Volume;
 double SurfaceArea;
 int UserAnswer;
-string input;
+string? input;
 
 Main();
 
@@ -31,7 +31,7 @@ void FirstInput()
 Return1:
     Console.Write("Define the radius of the cylinder in cm: ");
     input = Console.ReadLine();
-    if (input == null | !int.TryParse(input, out int n))
+    if (input == null | !int.TryParse(input, out int _))
     {
         Console.Clear();
         Console.WriteLine("Please enter a valid value.");
@@ -43,7 +43,7 @@ Return1:
 Return2:
     Console.Write("Define the height of the cylinder in cm: ");
     input = Console.ReadLine();
-    if (input == null | !int.TryParse(input, out int m))
+    if (input == null | !int.TryParse(input, out int _))
     {
         int currentLineCursor = Console.CursorTop;
         Console.SetCursorPosition(0, currentLineCursor - 2);
