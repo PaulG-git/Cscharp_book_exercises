@@ -11,7 +11,7 @@ namespace CylindersCalculator
       {1, new (nameof(CylindersCalculatorClass), CylindersCalculatorClass.CylindersCalculatorClassMain)},
       {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)}
     };   
-
+    
     private static void Main()
     {
       Console.WriteLine("Which program do you want to run?");
