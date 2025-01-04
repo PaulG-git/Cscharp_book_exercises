@@ -73,7 +73,7 @@ namespace CylindersCalculator
         {
           return false;
         }
-        RepositionCursurTopAndClearLine();
+        ClearCurrentConsoleLine();
         Console.WriteLine("You entered the wrong answer! Please answer with 'y' for 'yes' or 'n' for 'no'.");
       }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Dynamic;
 using System.Linq;
 using System.Reflection;
+using CylindersCalculator.UiMethods;
 
 namespace CylindersCalculator
 {
@@ -8,8 +9,9 @@ namespace CylindersCalculator
   {
     private static readonly Dictionary<int, (string, Action)> _actions = new()
     {
-      {1, new (nameof(CylindersCalculatorClass), CylindersCalculatorClass.CylindersCalculatorClassMain)},
-      {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)}
+      {1, new (nameof(CalculatorPaul), CalculatorPaul.CalculatorPaulMain)},
+      {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)},
+      {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)}
     };   
     
     private static void Main()
@@ -35,9 +37,7 @@ namespace CylindersCalculator
         }
         else
         {
-          Console.SetCursorPosition(0, Console.CursorTop);
-          Console.Write(new string(' ', Console.WindowWidth));
-          Console.SetCursorPosition(0, Console.CursorTop);
+          ConsoleUIMethods.ClearCurrentConsoleLine();
           Console.Write("Wrong input. Please specify the program that you want to run: ");
         }
       }

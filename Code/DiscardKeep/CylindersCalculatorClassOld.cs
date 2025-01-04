@@ -2,9 +2,9 @@
 
 namespace CylindersCalculator
 {
-  internal class CylindersCalculatorClass
+  internal class CylindersCalculatorClassOld
   {
-    public static void CylindersCalculatorClassMain()
+    public static void CylindersCalculatorClassOldMain()
     {
       int r;
       int h;
@@ -52,11 +52,11 @@ namespace CylindersCalculator
           Console.SetCursorPosition(0, currentLineCursor - 2);
           if (looped == true)
           {
-            RepositionCursurTopAndClearLine();
+            ClearCurrentConsoleLine();
           }
           else
           {
-            RepositionCursurTopAndClearLine();
+            ClearCurrentConsoleLine();
             Console.WriteLine("Please enter a valid value.");
             Console.SetCursorPosition(0, currentLineCursor);
             looped = true;
@@ -98,7 +98,7 @@ namespace CylindersCalculator
             return 0;
 
           default:
-            RepositionCursurTopAndClearLine();
+            ClearCurrentConsoleLine();
             Console.WriteLine("You entered the wrong answer!");
             Console.WriteLine("Please answer with 'y' for 'yes' or 'n' for 'no'.");
             return 2;
