@@ -26,7 +26,7 @@ namespace CylindersCalculator
 
     private static bool AskToContinue()
     {
-      Console.WriteLine("\nDo you want to define a new cylinder? Type 'y' for 'yes' or 'n' for 'no'.");
+      Console.WriteLine("\nDo you want to define a new cylinder? Type 'y' for 'yes' or 'n' for 'no'. To go back to main menu, please press 'r'.");
       
       bool looped = false;      
       while ( true ) 
@@ -40,6 +40,11 @@ namespace CylindersCalculator
         else if (userAnswer == 'n')
         {
           return false;
+        }
+        else if (userAnswer == 'r') 
+        {
+          Console.Clear();
+          CylindersCalculator.MainProgram.Main();
         }
 
         if (looped)
@@ -57,7 +62,7 @@ namespace CylindersCalculator
     private static bool WrongAnswer()
     {
       Console.WriteLine("You entered the wrong answer!");
-      Console.WriteLine("Please answer with 'y' for 'yes' or 'n' for 'no'.");
+      Console.WriteLine("Please answer with 'y' for 'yes' or 'n' for 'no'. To return to main menu press 'r'.");
       return true;
     }
   }

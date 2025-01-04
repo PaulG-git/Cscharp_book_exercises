@@ -14,7 +14,7 @@ namespace CylindersCalculator
       {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)}
     };   
     
-    private static void Main()
+    public static void Main()
     {
       Console.WriteLine("Which program do you want to run?");
       foreach (var action in _actions)
