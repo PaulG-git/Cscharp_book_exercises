@@ -1,4 +1,6 @@
-﻿namespace CylindersCalculator
+﻿using static CylindersCalculator.UiMethods.ConsoleUIMethods;
+
+namespace CylindersCalculator
 {
   internal class CalculatorRowan
   {
@@ -20,8 +22,7 @@
 
     private static int GetPositiveInt(string prompt)
     {
-      bool firstAttempt = true;
-      Console.Write(prompt);
+      Console.WriteLine(prompt);
       while (true)
       {
         string? input = Console.ReadLine();
@@ -29,11 +30,12 @@
         {
           return value;
         }
-
-        if (firstAttempt)
+        else 
         {
+          Console.Clear();
+          Console.WriteLine(prompt);
           Console.WriteLine("Please enter a valid positive integer.");
-          firstAttempt = false;
+          Console.SetCursorPosition(0, Console.CursorTop);
         }
       }
     }
@@ -60,18 +62,18 @@
       while (true)
       {
         Console.WriteLine("Do you want to define a new cylinder? Type 'y' for 'yes' or 'n' for 'no' and press Enter.");
-        string input = Console.ReadLine() ?? string.Empty;
+        char input = Console.ReadKey().KeyChar;
 
-        if (input == "y")
+        if (input == 'y')
         {
           Console.Clear();
           return true;
         }
-        else if (input == "n")
+        else if (input == 'n')
         {
           return false;
         }
-
+        RepositionCursurTopAndClearLine();
         Console.WriteLine("You entered the wrong answer! Please answer with 'y' for 'yes' or 'n' for 'no'.");
       }
     }

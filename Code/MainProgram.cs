@@ -6,16 +6,14 @@ namespace CylindersCalculator
 {
   internal class MainProgram
   {
-    static Dictionary<int, (string, Action)> _actions = new Dictionary<int, (string, Action)>();
-    public static void FillDictionary()
+    private static readonly Dictionary<int, (string, Action)> _actions = new()
     {
-      _actions.Add(1, (nameof(CylindersCalculatorClass), CylindersCalculatorClass.CylindersCalculatorClassMain));
-      _actions.Add(2, (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain));
-    }
+      {1, new (nameof(CylindersCalculatorClass), CylindersCalculatorClass.CylindersCalculatorClassMain)},
+      {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)}
+    };   
     
     private static void Main()
     {
-      FillDictionary();
       Console.WriteLine("Which program do you want to run?");
       foreach (var action in _actions)
       {
@@ -23,7 +21,6 @@ namespace CylindersCalculator
       }
 
       _actions[CheckInput()].Item2.Invoke();
-      
     }
 
     private static int CheckInput()
@@ -45,7 +42,5 @@ namespace CylindersCalculator
         }
       }
     }
-
-
   }
 }

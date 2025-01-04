@@ -1,4 +1,6 @@
-﻿namespace CylindersCalculator
+﻿using static CylindersCalculator.UiMethods.ConsoleUIMethods;
+
+namespace CylindersCalculator
 {
   internal class CylindersCalculatorClass
   {
@@ -50,15 +52,11 @@
           Console.SetCursorPosition(0, currentLineCursor - 2);
           if (looped == true)
           {
-            Console.SetCursorPosition(0, currentLineCursor - 1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor - 1);
+            RepositionCursurTopAndClearLine();
           }
           else
           {
-            Console.SetCursorPosition(0, currentLineCursor - 1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor - 1);
+            RepositionCursurTopAndClearLine();
             Console.WriteLine("Please enter a valid value.");
             Console.SetCursorPosition(0, currentLineCursor);
             looped = true;
@@ -100,11 +98,7 @@
             return 0;
 
           default:
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop);
+            RepositionCursurTopAndClearLine();
             Console.WriteLine("You entered the wrong answer!");
             Console.WriteLine("Please answer with 'y' for 'yes' or 'n' for 'no'.");
             return 2;
