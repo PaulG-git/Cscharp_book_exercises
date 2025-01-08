@@ -1,6 +1,6 @@
-﻿using CylindersCalculator.UiMethods;
+﻿using Exercises.UiMethods;
 
-namespace CylindersCalculator.CalculationMethods
+namespace Exercises.CalculationMethods
 {
   internal class NumberInputMethods
   {

@@ -1,4 +1,4 @@
-﻿namespace CylindersCalculator.CalculationMethods
+﻿namespace Exercises.CalculationMethods
 {
   internal class CylinderCalculationMethods
   {

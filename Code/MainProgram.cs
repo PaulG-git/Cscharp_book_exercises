@@ -1,6 +1,7 @@
-﻿using CylindersCalculator.UiMethods;
+﻿using Exercises.UiMethods;
+using CylinderCalculator;
 
-namespace CylindersCalculator
+namespace Exercises
 {
   internal class MainProgram
   {
@@ -9,8 +10,8 @@ namespace CylindersCalculator
       {1, new (nameof(CalculatorPaul), CalculatorPaul.CalculatorPaulMain)},
       {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)},
       {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)}
-    };   
-    
+    };
+
     public static void Main()
     {
       Console.WriteLine("Which program do you want to run?");

@@ -1,7 +1,7 @@
-﻿using CylindersCalculator.UiMethods;
-using CylindersCalculator.CalculationMethods;
+﻿using Exercises.UiMethods;
+using Exercises.CalculationMethods;
 
-namespace CylindersCalculator
+namespace CylinderCalculator
 {
   internal class CalculatorPaul
   {
@@ -44,7 +44,7 @@ namespace CylindersCalculator
         else if (userAnswer == 'r') 
         {
           Console.Clear();
-          CylindersCalculator.MainProgram.Main();
+          Exercises.MainProgram.Main();
         }
 
         if (looped)

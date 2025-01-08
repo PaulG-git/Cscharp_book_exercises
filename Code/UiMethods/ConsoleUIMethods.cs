@@ -1,4 +1,4 @@
-﻿namespace CylindersCalculator.UiMethods
+﻿namespace Exercises.UiMethods
 {
   public class ConsoleUIMethods
   {

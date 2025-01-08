@@ -1,6 +1,6 @@
-﻿using static CylindersCalculator.UiMethods.ConsoleUIMethods;
+﻿using static Exercises.UiMethods.ConsoleUIMethods;
 
-namespace CylindersCalculator
+namespace CylinderCalculator
 {
   internal class CylindersCalculatorClassOld
   {
