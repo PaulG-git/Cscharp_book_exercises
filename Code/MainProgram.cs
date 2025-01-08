@@ -1,7 +1,4 @@
-﻿using System.Dynamic;
-using System.Linq;
-using System.Reflection;
-using CylindersCalculator.UiMethods;
+﻿using CylindersCalculator.UiMethods;
 
 namespace CylindersCalculator
 {
