@@ -3,7 +3,7 @@ using Exercises.CalculationMethods;
 
 namespace CylinderCalculator
 {
-  internal class CalculatorPaul
+  internal class CylinderCalculatorPaul
   {
     public static void CalculatorPaulMain()
     {

@@ -1,5 +1,6 @@
 ﻿using Exercises.UiMethods;
 using CylinderCalculator;
+using Exercises.Exercises;
 
 namespace Exercises
 {
@@ -7,9 +8,12 @@ namespace Exercises
   {
     private static readonly Dictionary<int, (string, Action)> _actions = new()
     {
-      {1, new (nameof(CalculatorPaul), CalculatorPaul.CalculatorPaulMain)},
-      {2, new (nameof(CalculatorRowan), CalculatorRowan.CalculatorRowanMain)},
-      {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)}
+      {1, new (nameof(CylinderCalculatorPaul), CylinderCalculatorPaul.CalculatorPaulMain)},
+      {2, new (nameof(CylinderCalculatorRowan), CylinderCalculatorRowan.CalculatorRowanMain)},
+      {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)},
+      {4, new (nameof(Calculator), Calculator.CalculatorMain)},
+      {5, new (nameof(ShapePrinter), ShapePrinter.ShapePrinterMain)},
+      {6, new (nameof(FizzBuzz), FizzBuzz.FizzBuzzMain)}
     };
 
     public static void Main()

@@ -2,7 +2,7 @@
 
 namespace CylinderCalculator
 {
-  internal class CalculatorRowan
+  internal class CylinderCalculatorRowan
   {
     public static void CalculatorRowanMain()
     {
