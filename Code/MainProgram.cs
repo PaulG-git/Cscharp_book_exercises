@@ -1,6 +1,8 @@
 ﻿using Exercises.UiMethods;
 using CylinderCalculator;
-using Exercises.Exercises;
+using Calculator;
+using ShapePrinter;
+using FizzBuzz;
 
 namespace Exercises
 {
@@ -11,9 +13,9 @@ namespace Exercises
       {1, new (nameof(CylinderCalculatorPaul), CylinderCalculatorPaul.CalculatorPaulMain)},
       {2, new (nameof(CylinderCalculatorRowan), CylinderCalculatorRowan.CalculatorRowanMain)},
       {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)},
-      {4, new (nameof(Calculator), Calculator.CalculatorMain)},
-      {5, new (nameof(ShapePrinter), ShapePrinter.ShapePrinterMain)},
-      {6, new (nameof(FizzBuzz), FizzBuzz.FizzBuzzMain)}
+      {4, new (nameof(CalculatorClass), CalculatorClass.CalculatorMain)},
+      {5, new (nameof(ShapePrinterClass), ShapePrinterClass.ShapePrinterMain)},
+      {6, new (nameof(FizzBuzzClass), FizzBuzzClass.FizzBuzzMain)}
     };
 
     public static void Main()
@@ -24,25 +26,7 @@ namespace Exercises
         Console.WriteLine(action.Key + ". " + action.Value.Item1);
       }
 
-      _actions[CheckInput()].Item2.Invoke();
-    }
-
-    private static int CheckInput()
-    {
-      while (true)
-      {
-        string? answer = Console.ReadKey().KeyChar.ToString();
-        if (int.TryParse(answer, out int evaluatedAnswer) && evaluatedAnswer <= _actions.Count && evaluatedAnswer > 0)
-        {
-          Console.Clear();
-          return evaluatedAnswer;
-        }
-        else
-        {
-          ConsoleUIMethods.ClearCurrentConsoleLine();
-          Console.Write("Wrong input. Please specify the program that you want to run: ");
-        }
-      }
+      _actions[InputMethods.CheckInput(_actions.Count, "Wrong input. Please specify the program that you want to run: ")].Item2.Invoke();
     }
   }
 }

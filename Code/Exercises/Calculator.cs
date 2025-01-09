@@ -1,6 +1,6 @@
-﻿namespace Exercises.Exercises
+﻿namespace Calculator
 {
-  internal class Calculator
+  internal class CalculatorClass
   {
     public static void CalculatorMain() 
     { 

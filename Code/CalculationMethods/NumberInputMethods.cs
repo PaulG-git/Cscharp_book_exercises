@@ -4,7 +4,7 @@ namespace Exercises.CalculationMethods
 {
   internal class NumberInputMethods
   {
-    public static int GetInputPositiveInt(string prompt)
+    public static int GetInputPositiveInt(string prompt, int maxValue = int.MaxValue)
     {
       bool looped = false;
       while (true)
@@ -12,7 +12,7 @@ namespace Exercises.CalculationMethods
         Console.Write(prompt);
         string? input = Console.ReadLine();
         
-        if (int.TryParse(input, out int value) && value > 0)
+        if (int.TryParse(input, out int value) && value > 0 && value <= maxValue)
         {
           if (looped)
           {
@@ -36,6 +36,13 @@ namespace Exercises.CalculationMethods
           }
         }
       }
+    }
+
+    public static bool IsEven(int value)
+    {
+      if (value % 2 == 0)
+        return true;
+      return false;
     }
   }
 }

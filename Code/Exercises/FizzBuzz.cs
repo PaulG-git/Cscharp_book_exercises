@@ -1,6 +1,6 @@
-﻿namespace Exercises.Exercises
+﻿namespace FizzBuzz
 {
-  internal class FizzBuzz
+  internal class FizzBuzzClass
   {
     public static void FizzBuzzMain()
     {
