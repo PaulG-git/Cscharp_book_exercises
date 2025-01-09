@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "CylindersCalculator/1.0.0": {
+      "Exercises/1.0.0": {
         "runtime": {
-          "CylindersCalculator.dll": {}
+          "Exercises.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CylindersCalculator/1.0.0": {
+    "Exercises/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
