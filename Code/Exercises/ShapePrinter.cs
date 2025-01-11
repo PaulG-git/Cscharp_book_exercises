@@ -3,15 +3,23 @@ using Exercises.UiMethods;
 
 namespace ShapePrinter
 {
-  internal class ShapePrinterClass
+  internal class ShapePrinterClass  //Add more shapes
   {
+    /// <summary>
+    /// Collection of available shapes to print.
+    /// </summary>
     private static readonly Dictionary<int, (string, Action)> _actions = new()
     {
-      {1, new (nameof(Tree), Tree)},
+      {1, new (nameof(Tree), Tree)}
+      //add more
     };
-
+    
+    /// <summary>
+    /// This methods starts a shape printing program. 
+    /// </summary>
     public static void ShapePrinterMain()
     {
+      Console.WriteLine("Welcome to this shape printing program.");
       Console.WriteLine("Which shape do you want to draw?");
       foreach (var action in _actions)
       {
@@ -20,7 +28,10 @@ namespace ShapePrinter
 
       _actions[InputMethods.CheckInput(_actions.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
     }
-
+    
+    /// <summary>
+    /// Prints shape of a tree to the console.
+    /// </summary>
     private static void Tree()
     {
       do
@@ -37,13 +48,13 @@ namespace ShapePrinter
 
         for (int i = 1; i <= rows; i++)
         {
-          string whitespace = new string(' ', (columns / 2) - i);
-          string structure = new string('*', (i * 2) - 1);
+          string whitespace = new (' ', (columns / 2) - i);
+          string structure = new ('*', (i * 2) - 1);
           Console.Write(whitespace);
           Console.Write(structure);
           Console.Write(whitespace + "\n");
         }
-      } while (InputMethods.AskToContinue());
+      } while (InputMethods.AskToContinue("Do you want to print a new tree?"));
     }
   }
 }

@@ -14,7 +14,7 @@ namespace CylinderCalculator
 
         ShowResults(radius, height);
 
-      } while (InputMethods.AskToContinue());
+      } while (InputMethods.AskToContinue("Do you want to define a new cylinder?"));
     }
 
     private static void ShowResults(int radius, int height)

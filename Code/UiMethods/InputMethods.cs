@@ -9,7 +9,7 @@ namespace Exercises.UiMethods
       while (true)
       {
         string? answer = Console.ReadKey().KeyChar.ToString();
-        if (int.TryParse(answer, out int evaluatedAnswer) && evaluatedAnswer <= maxValue && evaluatedAnswer > 0)
+        if (int.TryParse(answer, out int evaluatedAnswer) && evaluatedAnswer <= maxValue)
         {
           Console.Clear();
           return evaluatedAnswer;
@@ -17,14 +17,19 @@ namespace Exercises.UiMethods
         else
         {
           ConsoleUIMethods.ClearCurrentConsoleLine();
-          Console.Write("Wrong input. Please specify the program that you want to run: ");
+          Console.Write(promptIfWrong);
         }
       }
     }
 
-    public static bool AskToContinue()
+    /// <summary>
+    /// Asks user to rerun program, exit or return to main menu.
+    /// </summary>
+    /// <returns>Returns bool or redirects back to main program.</returns>
+    public static bool AskToContinue(string prompt)
     {
-      Console.WriteLine("\nDo you want to define a new cylinder? Type 'y' for 'yes' or 'n' for 'no'. To go back to main menu, please press 'r'.");
+      Console.WriteLine("\n" + prompt);
+      Console.WriteLine("Type 'y' for 'yes' or 'n' for 'no'. To go back to main menu, please press 'r'.");
 
       bool looped = false;
       while (true)
@@ -37,12 +42,13 @@ namespace Exercises.UiMethods
         }
         else if (userAnswer == 'n')
         {
-          return false;
+          MainProgram.ExitProgram();
         }
         else if (userAnswer == 'r')
         {
           Console.Clear();
-          MainProgram.Main();
+          return false;
+          
         }
 
         if (looped)
