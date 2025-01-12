@@ -4,6 +4,12 @@ namespace Exercises.CalculationMethods
 {
   internal class NumberInputMethods
   {
+    /// <summary>
+    /// Asks user for input and checks if input is positive integer. Optional to define maximum value for user input. 
+    /// </summary>
+    /// <param name="prompt">Define text to be printed to console before asking user for input.</param>
+    /// <param name="maxValue">Optional. Define maximum value that user can enter.</param>
+    /// <returns>Returns positive integer defined by the user.</returns>
     public static int GetInputPositiveInt(string prompt, int maxValue = int.MaxValue)
     {
       bool looped = false;
@@ -38,6 +44,11 @@ namespace Exercises.CalculationMethods
       }
     }
 
+    /// <summary>
+    /// Determines id specific integer number is even.
+    /// </summary>
+    /// <param name="value">Define integer number to check.</param>
+    /// <returns>Returns bool. True = number is even. False = number is odd.</returns>
     public static bool IsEven(int value)
     {
       if (value % 2 == 0)

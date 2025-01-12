@@ -24,8 +24,8 @@ namespace ShapeCalculator
     /// <summary>
     /// Outputs calculation results to console.
     /// </summary>
-    /// <param name="radius"></param>
-    /// <param name="height"></param>
+    /// <param name="radius">Define radius of the cylinder.</param>
+    /// <param name="height">Define height of the cylinder.</param>
     private static void ShowResults(int radius, int height)
     {
       Console.WriteLine($"\nThe cylinder has an radius of {radius} cm and height of {height} cm.");

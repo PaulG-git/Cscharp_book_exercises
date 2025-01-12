@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Exercises.UiMethods
+﻿namespace Exercises.UiMethods
 {
   internal class InputMethods
   {

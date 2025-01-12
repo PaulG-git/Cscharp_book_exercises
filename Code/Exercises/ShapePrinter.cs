@@ -1,5 +1,4 @@
-﻿using Exercises;
-using Exercises.CalculationMethods;
+﻿using Exercises.CalculationMethods;
 using Exercises.UiMethods;
 using System.Runtime.CompilerServices;
 
