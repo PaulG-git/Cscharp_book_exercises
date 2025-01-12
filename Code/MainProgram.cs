@@ -18,7 +18,7 @@ namespace Exercises
     /// </summary>
     private static readonly Dictionary<int, (string, Action)> _actions = new()
     {
-      {1, new (nameof(CylinderCalculatorPaul), CylinderCalculatorPaul.CalculatorPaulMain)},
+      {1, new (nameof(ShapeCalculatorPaul), ShapeCalculatorPaul.ShapeCalculatorPaulMain)},
       {2, new (nameof(CylinderCalculatorRowan), CylinderCalculatorRowan.CalculatorRowanMain)},
       {3, new (nameof(CylindersCalculatorClassOld), CylindersCalculatorClassOld.CylindersCalculatorClassOldMain)},
       {4, new (nameof(CalculatorClass), CalculatorClass.CalculatorMain)},

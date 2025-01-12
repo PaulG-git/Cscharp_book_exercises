@@ -3,9 +3,12 @@ using Exercises.CalculationMethods;
 
 namespace CylinderCalculator
 {
-  internal class CylinderCalculatorPaul
+  internal class ShapeCalculatorPaul
   {
-    public static void CalculatorPaulMain()
+    /// <summary>
+    /// Gets 2 inputs from user and calculates shape parameters.
+    /// </summary>
+    public static void ShapeCalculatorPaulMain()
     {
       do
       {
@@ -17,11 +20,16 @@ namespace CylinderCalculator
       } while (InputMethods.AskToContinue("Do you want to define a new cylinder?"));
     }
 
+    /// <summary>
+    /// Outputs calculation results to console.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="height"></param>
     private static void ShowResults(int radius, int height)
     {
       Console.WriteLine($"\nThe cylinder has an radius of {radius} cm and height of {height} cm.");
-      Console.WriteLine($"The surface area of the cylinder is {(double)CylinderCalculationMethods.CalculateSurfaceArea(radius, height)} cm².");
-      Console.WriteLine($"The volume of the cylinder is {(double)CylinderCalculationMethods.CalculateVolume(radius, height)} cm³.");
+      Console.WriteLine($"The surface area of the cylinder is {(double)ShapeCalculationMethods.CylinderSurfaceArea(radius, height)} cm².");
+      Console.WriteLine($"The volume of the cylinder is {(double)ShapeCalculationMethods.CylinderVolume(radius, height)} cm³.");
     }
   }
 }
