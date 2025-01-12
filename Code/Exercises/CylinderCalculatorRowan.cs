@@ -1,6 +1,6 @@
 ﻿using static Exercises.UiMethods.ConsoleUIMethods;
 
-namespace CylinderCalculator
+namespace ShapeCalculator
 {
   internal class CylinderCalculatorRowan
   {

@@ -1,5 +1,5 @@
 ﻿using Exercises.UiMethods;
-using CylinderCalculator;
+using ShapeCalculator;
 using Calculator;
 using ShapePrinter;
 using FizzBuzz;

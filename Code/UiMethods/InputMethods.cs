@@ -5,6 +5,11 @@ namespace Exercises.UiMethods
   internal class InputMethods
   {
     /// <summary>
+    /// Parameter to track rerun method, return to subprogram, return to main menu or quit program. 
+    /// </summary>
+    public static (bool, bool) UserAnswer;
+
+    /// <summary>
     /// Asks user for input and checks specified conditions. Loops if wrong input is provided.
     /// </summary>
     /// <param name="maxValue">Provide upper limit for acceptable input int.</param>
@@ -31,11 +36,14 @@ namespace Exercises.UiMethods
     /// <summary>
     /// Asks user to rerun program, exit or return to main menu.
     /// </summary>
-    /// <returns>Returns bool or redirects back to main program.</returns>
-    public static bool AskToContinue(string prompt)
+    /// <returns>Returns 2 bool values. Bool 1 to choose if loop method or return to subprogram. Bool 2 to determine if return to main menu.</returns>
+    public static (bool, bool) AskToContinue(string promptMethod, string? promptSubprogram = null)
     {
-      Console.WriteLine("\n" + prompt);
-      Console.WriteLine("Type 'y' for 'yes' or 'n' for 'no'. To go back to main menu, please press 'r'.");
+      Console.WriteLine($"\n" + promptMethod);
+      if (promptSubprogram != null) 
+        Console.WriteLine(promptSubprogram);
+      Console.WriteLine("If you want to return to main menu, type 'r'.");
+      Console.WriteLine("If you want to quit program entirely, type 'n'.");
 
       bool looped = false;
       while (true)
@@ -44,7 +52,7 @@ namespace Exercises.UiMethods
         if (userAnswer == 'y')
         {
           Console.Clear();
-          return true;
+          return (true, true);
         }
         else if (userAnswer == 'n')
         {
@@ -53,7 +61,12 @@ namespace Exercises.UiMethods
         else if (userAnswer == 'r')
         {
           Console.Clear();
-          return false;
+          return (false, false);
+        }
+        else if (userAnswer == 's')
+        {
+          Console.Clear();
+          return (false, true);
         }
 
         if (looped)

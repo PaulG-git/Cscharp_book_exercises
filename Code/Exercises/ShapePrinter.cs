@@ -8,11 +8,6 @@ namespace ShapePrinter
   internal class ShapePrinterClass
   {
     /// <summary>
-    /// Stack parameter to track rerun shape, choose different shape, return to main menu or quit program. 
-    /// </summary>
-    private static (bool, bool) UserAnswer;
-
-    /// <summary>
     /// Collection of available shapes to print.
     /// </summary>
     private static readonly Dictionary<int, (string, Action)> _actions = new()
@@ -44,7 +39,7 @@ namespace ShapePrinter
         }
 
         _actions[InputMethods.CheckInput(_actions.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
-      } while (UserAnswer.Item2);
+      } while (InputMethods.UserAnswer.Item2);
     }
 
     /// <summary>
@@ -61,54 +56,6 @@ namespace ShapePrinter
       int rows = NumberInputMethods.GetInputPositiveInt($"Please, specify how many rows do you want the {shape} to be: ", maxrows);
       Console.Clear();
       return rows;
-    }
-
-    /// <summary>
-    /// Ask the user to print new same shape, print other shape, return to main menu or quit program etirely.
-    /// </summary>
-    /// <param name="shape">Name of the shape determined from running method name</param>
-    private static (bool, bool) AskNextShape([CallerMemberName] string? shape = null)
-    {
-      Console.WriteLine($"\nIf you want to print a new {shape}, type 'y'.");
-      Console.WriteLine("If you want to print some other shape, type 's'.");
-      Console.WriteLine("If you want to return to main menu, type 'r'.");
-      Console.WriteLine("If you want to quit program entirely, type 'n'.");
-
-      bool looped = false;
-      while (true)
-      {
-        char userAnswer = Console.ReadKey().KeyChar;
-        if (userAnswer == 'y')
-        {
-          Console.Clear();
-          return (true, true);
-        }
-        else if (userAnswer == 'n')
-        {
-          MainProgram.ExitProgram();
-        }
-        else if (userAnswer == 'r')
-        {
-          Console.Clear();
-          return (false, false);
-        }
-        else if (userAnswer == 's')
-        {
-          Console.Clear();
-          return (false, true);
-        }
-
-        if (looped)
-        {
-          ConsoleUIMethods.ClearLastXLines(2);
-        }
-        else
-        {
-          ConsoleUIMethods.ClearCurrentConsoleLine();
-          Console.WriteLine();
-        }
-        looped = InputMethods.WrongAnswer();
-      }
     }
 
     /// <summary>
@@ -132,8 +79,8 @@ namespace ShapePrinter
           Console.Write(structure);
           Console.Write(whitespace + "\n");
         }
-        UserAnswer = AskNextShape();
-      } while (UserAnswer.Item1);
+        InputMethods.UserAnswer = InputMethods.AskToContinue($"\nIf you want to print a new tree, type 'y'.", "If you want to print some other shape, type 's'.");
+      } while (InputMethods.UserAnswer.Item1);
     }
   }
 }

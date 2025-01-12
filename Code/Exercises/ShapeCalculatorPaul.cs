@@ -1,7 +1,7 @@
 ﻿using Exercises.UiMethods;
 using Exercises.CalculationMethods;
 
-namespace CylinderCalculator
+namespace ShapeCalculator
 {
   internal class ShapeCalculatorPaul
   {
@@ -17,7 +17,8 @@ namespace CylinderCalculator
 
         ShowResults(radius, height);
 
-      } while (InputMethods.AskToContinue("Do you want to define a new cylinder?"));
+        InputMethods.UserAnswer = InputMethods.AskToContinue("If you want to calculate another cylinder, type 'y'.");
+      } while (InputMethods.UserAnswer.Item1);
     }
 
     /// <summary>
