@@ -9,15 +9,14 @@ namespace ShapePrinter
     /// <summary>
     /// Collection of available shapes to print.
     /// </summary>
-    private static readonly Dictionary<int, (string, Action)> _actions = new()
+    private static readonly Dictionary<int, (string, Action)> _shapes = new()
     {
-      {1, new (nameof(Tree), Tree)}
-      
+      {1, new (nameof(Tree), Tree)},
+      {0, ("Return to main menu", ProgramMethods.ExitSubProgram)}
       
       
       
       //ADD MORE SHAPES!!!!!!!
-
 
 
 
@@ -32,13 +31,15 @@ namespace ShapePrinter
       {
         Console.WriteLine("Welcome to this shape printing program.");
         Console.WriteLine("Which shape do you want to draw?");
-        foreach (var action in _actions)
+        foreach (var action in _shapes)
         {
+          if (action.Key == 0)
+            Console.WriteLine();
           Console.WriteLine(action.Key + ". " + action.Value.Item1);
         }
 
-        _actions[InputMethods.CheckInput(_actions.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
-      } while (InputMethods.UserAnswer.Item2);
+        _shapes[ProgramMethods.CheckInput(_shapes.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
+      } while (ProgramMethods.UserAnswer.Item2);
     }
 
     /// <summary>
@@ -78,8 +79,8 @@ namespace ShapePrinter
           Console.Write(structure);
           Console.Write(whitespace + "\n");
         }
-        InputMethods.UserAnswer = InputMethods.AskToContinue($"\nIf you want to print a new tree, type 'y'.", "If you want to print some other shape, type 's'.");
-      } while (InputMethods.UserAnswer.Item1);
+        ProgramMethods.UserAnswer = ProgramMethods.AskToContinue($"\nIf you want to print a new tree, type 'y'.", "If you want to print some other shape, type 's'.");
+      } while (ProgramMethods.UserAnswer.Item1);
     }
   }
 }

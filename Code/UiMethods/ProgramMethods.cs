@@ -1,6 +1,6 @@
 ﻿namespace Exercises.UiMethods
 {
-  internal class InputMethods
+  internal class ProgramMethods
   {
     /// <summary>
     /// Parameter to track rerun method, return to subprogram, return to main menu or quit program. 
@@ -54,7 +54,7 @@
         }
         else if (userAnswer == 'n')
         {
-          MainProgram.ExitProgram();
+          ExitProgram();
         }
         else if (userAnswer == 'r')
         {
@@ -89,6 +89,20 @@
       Console.WriteLine("You entered the wrong answer!");
       Console.WriteLine("Please, provide acceptable answer.");
       return true;
+    }
+
+    /// <summary>
+    /// Exits program immediately.
+    /// </summary>
+    public static void ExitProgram()
+    {
+      Environment.Exit(1);
+    }
+
+    public static void ExitSubProgram()
+    {
+      Console.Clear();
+      UserAnswer = (false, false);
     }
   }
 }

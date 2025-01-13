@@ -26,7 +26,7 @@ namespace Exercises
       {6, new (nameof(FizzBuzzClass), FizzBuzzClass.FizzBuzzMain)},
       {7, new (nameof(ArrayReverseClass), ArrayReverseClass.ArrayReverseMain)},
       {8, new (nameof(RecursionPracticeClass), RecursionPracticeClass.RecursionFibonacciSequenceMain)},
-      {0, new ("Exit program", ExitProgram)}
+      {0, new ("Exit program", ProgramMethods.ExitProgram)}
     };
     
     /// <summary>
@@ -44,16 +44,8 @@ namespace Exercises
           Console.WriteLine(action.Key + ". " + action.Value.Item1);
         }
 
-        _actions[InputMethods.CheckInput(_actions.Count, "Wrong input. Please specify the program that you want to run: ")].Item2.Invoke();
+        _actions[ProgramMethods.CheckInput(_actions.Count, "Wrong input. Please specify the program that you want to run: ")].Item2.Invoke();
       }
-    }
-
-    /// <summary>
-    /// Exits program immediately.
-    /// </summary>
-    public static void ExitProgram()
-    {
-      Environment.Exit(1);
     }
   }
 }
