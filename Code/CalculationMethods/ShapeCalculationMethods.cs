@@ -47,7 +47,7 @@ namespace Exercises.CalculationMethods
     }
 
     /// <summary>
-    /// Calculates the perimeter of an triangle.
+    /// Calculates the perimeter of an triangle and outputs triangle type.
     /// </summary>
     /// <param name="width">Define width of the triangle.</param>
     /// <param name="height">Define height of the tiangle.</param>
@@ -55,21 +55,47 @@ namespace Exercises.CalculationMethods
     /// <returns>Returns the perimeter of defined triangle in cm.</returns>
     public static double TrianglePerimeter(int width, int height, int angle)
     {
-      if (Math.Tan(angle) != height / (width / 2))
-      {
-        Console.Clear();
-        ProgramMethods.UserAnswer.Item1 = true;
-        Console.WriteLine("The defined triangle is impossible. Pleas define new triangle!");
-        return -1;
-      }
-      
+      double angleRadians = angle * (MathF.PI / 180);
+      string bySideType;
+      string byAngleType;
       double sideA;
-      if (angle != 90) 
-        sideA = height / Math.Sin(angle);
-      else
+      double sideB;
+      double b = height / Math.Tan(angleRadians);
+
+      if (angle == 90 || b == width)
+      {
+        byAngleType = "Right";
         sideA = height;
-      double sideB = Math.Sqrt(Math.Pow(width, 2) + Math.Pow(sideA, 2));
-      return width + sideA + sideB;
+        sideB = Math.Sqrt(Math.Pow(width, 2) + Math.Pow(height, 2));
+      }
+      else if (b < width)
+      {
+        sideA = height / Math.Sin(angleRadians);
+        sideB = Math.Sqrt(Math.Pow(width - b, 2) + Math.Pow(height, 2));
+        if (sideA == sideB)
+          byAngleType = "Right";
+        else
+          byAngleType = "Acute";
+      }
+      else 
+      {
+        byAngleType = "Obtuse";
+        sideA = height / Math.Sin(angleRadians);
+        sideB = Math.Sqrt(Math.Pow(b - width, 2) + Math.Pow(height, 2));
+      }
+
+      if (sideA == sideB && sideA == width)
+      {
+        bySideType = "Equilateral";
+        byAngleType = "Acute";
+      }
+      else if (sideA == sideB || sideA == width || sideB == width)
+        bySideType = "Isoceles";
+      else
+        bySideType = "Scalene";
+
+      Console.WriteLine($"\nDefined triangle is an '{bySideType} {byAngleType} Triangle'.");
+      return sideA + sideB + width;
     }
 
     /// <summary>
@@ -78,9 +104,34 @@ namespace Exercises.CalculationMethods
     /// <param name="width">Define width of the triangle.</param>
     /// <param name="height">Define height of the tiangle.</param>
     /// <returns>Returns the area of defined triangle in cm.</returns>
-    public static double TriangleArea(int width, int height)
+    public static double TriangleArea(int width, int height, int angle)
     {
-      return 0.5 * width * height;
+      double angleRadians = angle * (MathF.PI / 180);
+      double b = height / Math.Tan(angleRadians);
+      if (b < width || b == width || angle == 90)
+        return 0.5 * width * height;
+      else
+        return (0.5 * width * height) - (0.5 * (b - width) * height);
+    }
+
+    /// <summary>
+    /// Calculates the perimeter of an Circle.
+    /// </summary>
+    /// <param name="radius">Define radius of the circle.</param>
+    /// <returns>Returns the perimeter of defined circle in cm.</returns>
+    public static double CirclePerimeter(int radius)
+    {
+      return 2 * Math.PI * radius;
+    }
+
+    /// <summary>
+    /// Calculates the area of an Circle.
+    /// </summary>
+    /// <param name="radius">Define radius of the circle.</param>
+    /// <returns>Returns the area of defined circle in cm.</returns>
+    public static double CircleArea(int radius)
+    {
+      return Math.PI * Math.Pow(radius, 2);
     }
 
     /// <summary>

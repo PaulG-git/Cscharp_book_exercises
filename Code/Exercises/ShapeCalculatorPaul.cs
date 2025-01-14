@@ -81,24 +81,29 @@ namespace ShapeCalculator
       {
         int width = NumberInputMethods.GetInputPositiveInt("Define the base of the triangle in cm: ");
         int heigth = NumberInputMethods.GetInputPositiveInt("Define the heigth of the heigth in cm: ");
-        int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 0° and 90°. Type in '0' if you only want to calculate the area: ", 90, 0);
-        double perimeter = 0;
-        if (angle != 0)
-          perimeter = ShapeCalculationMethods.TrianglePerimeter(width, heigth, angle);
-        if (perimeter != -1)
-        {
-          double area = ShapeCalculationMethods.TriangleArea(width, heigth);
-          Show2DResults(perimeter, area);
-        }
+        int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 1° and 90°. Type in '0' if you only want to calculate the area: ", 90);
+        
+        double perimeter = ShapeCalculationMethods.TrianglePerimeter(width, heigth, angle);
+        double area = ShapeCalculationMethods.TriangleArea(width, heigth, angle);
+        Show2DResults(perimeter, area);
+        
       } while (ProgramMethods.UserAnswer.Item1);
     }
 
     /// <summary>
-    /// Asks user to input circle dimensions and calculates it's parameters. 
+    /// Asks user to input circle radius and calculates it's parameters. 
     /// </summary>
     private static void Circle()
     {
+      do
+      {
+        int radius = NumberInputMethods.GetInputPositiveInt("Define the radius of the circle in cm: ");
 
+        double perimeter = ShapeCalculationMethods.CirclePerimeter(radius);
+        double area = ShapeCalculationMethods.CircleArea(radius);
+        Show2DResults(perimeter, area);
+
+      } while (ProgramMethods.UserAnswer.Item1);
     }
 
     /// <summary>
