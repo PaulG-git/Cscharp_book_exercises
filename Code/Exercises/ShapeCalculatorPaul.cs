@@ -89,7 +89,7 @@ namespace ShapeCalculator
         int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 1° and 90°: ", 90);
         
         double perimeter = ShapeCalculationMethods.TrianglePerimeter(width, heigth, angle);
-        double area = ShapeCalculationMethods.TriangleArea(width, heigth, angle);
+        double area = ShapeCalculationMethods.TriangleArea(width, heigth);
         
         Show2DResults(perimeter, area);
       } while (ProgramMethods.UserAnswer.Item1);

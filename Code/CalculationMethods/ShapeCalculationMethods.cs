@@ -104,14 +104,9 @@ namespace Exercises.CalculationMethods
     /// <param name="width">Define width of the triangle.</param>
     /// <param name="height">Define height of the tiangle.</param>
     /// <returns>Returns the area of defined triangle in cm.</returns>
-    public static double TriangleArea(int width, int height, int angle)
+    public static double TriangleArea(int width, int height)
     {
-      double angleRadians = angle * (MathF.PI / 180);
-      double b = height / Math.Tan(angleRadians);
-      if (b < width || b == width || angle == 90)
         return 0.5 * width * height;
-      else
-        return (0.5 * width * height) - (0.5 * (b - width) * height);
     }
 
     /// <summary>
