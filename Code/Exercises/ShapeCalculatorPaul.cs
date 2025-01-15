@@ -15,7 +15,7 @@ namespace ShapeCalculator
       {2, ("(2D) ", nameof(Rectangle), Rectangle)},
       {3, ("(2D) ", nameof(Triangle), Triangle)},
       {4, ("(2D) ", nameof(Circle), Circle)},
-      {5, ("(2D) ", nameof(Eclipse), Eclipse)},
+      {5, ("(2D) ", nameof(Ellipse), Ellipse)},
       {6, ("(2D) ", nameof(Trapezoid), Trapezoid)},
       {7, ("(3D) ", nameof(Cylinder), Cylinder)},
       {0, ("", "Return to main menu", ProgramMethods.ExitSubProgram)}
@@ -49,6 +49,7 @@ namespace ShapeCalculator
       do
       {
         int side = NumberInputMethods.GetInputPositiveInt("Define the sides length of the square in cm: ");
+        
         int perimeter = ShapeCalculationMethods.SquarePerimeter(side);
         int area = ShapeCalculationMethods.SquareArea(side);
 
@@ -65,6 +66,10 @@ namespace ShapeCalculator
       {
         int width = NumberInputMethods.GetInputPositiveInt("Define the width of the rectangle in cm: ");
         int heigth = NumberInputMethods.GetInputPositiveInt("Define the heigth of the rectangle in cm: ");
+        
+        if (width == heigth)
+          Console.WriteLine("\nDefined rectangle is an square!");
+
         int perimeter = ShapeCalculationMethods.RectanglePerimeter(width, heigth);
         int area = ShapeCalculationMethods.RectangleArea(width, heigth);
 
@@ -81,12 +86,12 @@ namespace ShapeCalculator
       {
         int width = NumberInputMethods.GetInputPositiveInt("Define the base of the triangle in cm: ");
         int heigth = NumberInputMethods.GetInputPositiveInt("Define the heigth of the heigth in cm: ");
-        int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 1° and 90°. Type in '0' if you only want to calculate the area: ", 90);
+        int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 1° and 90°: ", 90);
         
         double perimeter = ShapeCalculationMethods.TrianglePerimeter(width, heigth, angle);
         double area = ShapeCalculationMethods.TriangleArea(width, heigth, angle);
-        Show2DResults(perimeter, area);
         
+        Show2DResults(perimeter, area);
       } while (ProgramMethods.UserAnswer.Item1);
     }
 
@@ -101,17 +106,26 @@ namespace ShapeCalculator
 
         double perimeter = ShapeCalculationMethods.CirclePerimeter(radius);
         double area = ShapeCalculationMethods.CircleArea(radius);
+        
         Show2DResults(perimeter, area);
-
       } while (ProgramMethods.UserAnswer.Item1);
     }
 
     /// <summary>
     /// Asks user to input eclipse dimensions and calculates it's parameters. 
     /// </summary>
-    private static void Eclipse()
+    private static void Ellipse()
     {
-
+      do
+      {
+        int longRadius = NumberInputMethods.GetInputPositiveInt("Define the radius of the long axis of an ellipse in cm: ");
+        int shortRadius = NumberInputMethods.GetInputPositiveInt("Define the radius of the short axis of an ellipse in cm: ",longRadius);
+        
+        double perimeter = ShapeCalculationMethods.EllipsePerimeter(longRadius, shortRadius);
+        double area = ShapeCalculationMethods.EllipseArea(longRadius, shortRadius);
+        
+        Show2DResults(perimeter, area);
+      } while (ProgramMethods.UserAnswer.Item1);
     }
 
     /// <summary>
@@ -147,8 +161,7 @@ namespace ShapeCalculator
     private static void Show2DResults(double perimeter, double area, [CallerMemberName] string? shape = null)
     {
       Console.WriteLine();
-      if (perimeter != 0)
-        Console.WriteLine($"The perimeter of defined {shape} is {perimeter} cm.");
+      Console.WriteLine($"The perimeter of defined {shape} is {perimeter} cm.");
       Console.WriteLine($"The surface area of defined {shape} is {area} cm².");
       ProgramMethods.UserAnswer = ProgramMethods.AskToContinue($"If you want to calculate another {shape}, type 'y'.", "If you want to select other shape, type 's'.");
     }

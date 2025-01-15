@@ -5,6 +5,7 @@ using ShapePrinter;
 using FizzBuzz;
 using ArrayReverse;
 using RecursionPractice;
+using RollDice;
 
 namespace Exercises
 {
@@ -26,6 +27,7 @@ namespace Exercises
       {6, new (nameof(FizzBuzzClass), FizzBuzzClass.FizzBuzzMain)},
       {7, new (nameof(ArrayReverseClass), ArrayReverseClass.ArrayReverseMain)},
       {8, new (nameof(RecursionPracticeClass), RecursionPracticeClass.RecursionFibonacciSequenceMain)},
+      {9, new (nameof(RollDiceClass), RollDiceClass.RollDiceMain)},
       {0, new ("Exit program", ProgramMethods.ExitProgram)}
     };
     

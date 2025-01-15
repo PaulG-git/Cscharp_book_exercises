@@ -115,7 +115,7 @@ namespace Exercises.CalculationMethods
     }
 
     /// <summary>
-    /// Calculates the perimeter of an Circle.
+    /// Calculates the perimeter of an circle.
     /// </summary>
     /// <param name="radius">Define radius of the circle.</param>
     /// <returns>Returns the perimeter of defined circle in cm.</returns>
@@ -125,7 +125,7 @@ namespace Exercises.CalculationMethods
     }
 
     /// <summary>
-    /// Calculates the area of an Circle.
+    /// Calculates the area of an circle.
     /// </summary>
     /// <param name="radius">Define radius of the circle.</param>
     /// <returns>Returns the area of defined circle in cm.</returns>
@@ -134,6 +134,42 @@ namespace Exercises.CalculationMethods
       return Math.PI * Math.Pow(radius, 2);
     }
 
+    /// <summary>
+    /// Calculates the perimeter of an ellipse.
+    /// </summary>
+    /// <param name="longRadius">Define radius of long axis of the ellipse.</param>
+    /// <param name="shortRadius">Define radius of short axis of the ellipse.</param>
+    /// <returns>Returns the perimeter of defined ellipse in cm.</returns>
+    /// <remarks>
+    /// If the 'long radius' is not longer than 3 times the 'short radius', the second Ramanujan's approximation formula is used.
+    /// Otherwise it averages both Ramanujan's approximation formulas to best fit the result compared to ifinite series integral formula.
+    /// </remarks>
+    /// <seealso cref="https://www.mathsisfun.com/geometry/ellipse-perimeter.html"/>
+    public static double EllipsePerimeter(int longRadius, int shortRadius)
+    {
+      double h = Math.Pow(longRadius - shortRadius, 2) / Math.Pow(longRadius + shortRadius, 2);
+      double approx2 = Math.PI * (longRadius + shortRadius) * (1 + ((3 * h) / (10 + Math.Sqrt(4 - (3 * h)))));
+      double approx1 = approx2;
+      
+      if (longRadius / shortRadius >= 3)
+      {
+        approx1 = Math.PI * (3 * (longRadius + shortRadius) - Math.Sqrt(((3 * longRadius) + shortRadius) * (longRadius + (3 * shortRadius))));
+      }
+      
+      return (approx2 + approx1) / 2;
+    }
+
+    /// <summary>
+    /// Calculates the area of an ellipse.
+    /// </summary>
+    /// <param name="longRadius">Define radius of long axis of the ellipse.</param>
+    /// <param name="shortRadius">Define radius of short axis of the ellipse.</param>
+    /// <returns>Returns the area of defined ellipse in cm.</returns>
+    public static double EllipseArea(int longRadius, int shortRadius)
+    {
+      return Math.PI * longRadius * shortRadius;
+    }
+    
     /// <summary>
     /// Calculates the volume of an cylinder.
     /// </summary>
