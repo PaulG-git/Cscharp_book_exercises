@@ -5,6 +5,26 @@ namespace Exercises.CalculationMethods
   internal class ShapeCalculationMethods
   {
     /// <summary>
+    /// Converts given angle in degrees to angle in radians. 
+    /// </summary>
+    /// <param name="angle">Define the angle in degrees.</param>
+    /// <returns>Returns the angle in radians.</returns>
+    public static double AngleToRadians(double angle)
+    { 
+      return angle * (MathF.PI / 180);
+    }
+
+    /// <summary>
+    /// Converts given angle in radians to angle in degrees. 
+    /// </summary>
+    /// <param name="angle">Define the angle in radians.</param>
+    /// <returns>Returns the angle in radians.</returns>
+    public static double AngleToDegrees(double angle)
+    {
+      return angle * (180 / MathF.PI);
+    }
+
+    /// <summary>
     /// Calculates the perimeter of an square.
     /// </summary>
     /// <param name="sideLength">Define sides length of the square.</param>
@@ -55,7 +75,7 @@ namespace Exercises.CalculationMethods
     /// <returns>Returns the perimeter of defined triangle in cm.</returns>
     public static double TrianglePerimeter(int width, int height, int angle)
     {
-      double angleRadians = angle * (MathF.PI / 180);
+      double angleRadians = AngleToRadians(angle);
       string bySideType;
       string byAngleType;
       double sideA;
@@ -147,9 +167,7 @@ namespace Exercises.CalculationMethods
       double approx1 = approx2;
       
       if (longRadius / shortRadius >= 3)
-      {
         approx1 = Math.PI * (3 * (longRadius + shortRadius) - Math.Sqrt(((3 * longRadius) + shortRadius) * (longRadius + (3 * shortRadius))));
-      }
       
       return (approx2 + approx1) / 2;
     }
@@ -164,7 +182,46 @@ namespace Exercises.CalculationMethods
     {
       return Math.PI * longRadius * shortRadius;
     }
-    
+
+    /// <summary>
+    /// Calculates the perimeter of an trapezoid.
+    /// </summary>
+    /// <param name="topBase">Define top (short) base of the trapezoid.</param>
+    /// <param name="bottomBase">Define bottom (long) base of the trapezoid.</param>
+    /// <param name="heigth">Define height of the trapezoid.</param>
+    /// <param name="angle">Define the left sharp angle of the trapezoid.</param>
+    /// <returns>Returns the perimeter of defined trapezoid in cm.</returns>
+    public static double TrapezoidPerimeter(int bottomBase, int topBase, int heigth, int angle)
+    {
+      string type;
+      double angleRadians = AngleToRadians(angle);
+      double sideLeft = heigth / Math.Sin(angleRadians);
+      double sideRight = Math.Sqrt(Math.Pow(bottomBase - topBase - (heigth / Math.Tan(angleRadians)), 2) + Math.Pow(heigth, 2));
+
+      if (angle == 90)
+        type = "Right";
+      else if (sideLeft == sideRight)
+        type = "Isosceles";
+      else
+        type = "Scalene";
+
+      Console.WriteLine($"\nDefined trapezoid is an '{type} Trapezoid'.");
+      return topBase + bottomBase + sideLeft + sideRight;
+    }
+
+    /// <summary>
+    /// Calculates the area of an trapezoid.
+    /// </summary>
+    /// <param name="topBase">Define top (short) base of the trapezoid.</param>
+    /// <param name="bottomBase">Define bottom (long) base of the trapezoid.</param>
+    /// <param name="heigth">Define height of the trapezoid.</param>
+    /// <param name="angle">Define the left sharp angle of the trapezoid.</param>
+    /// <returns>Returns the area of defined trapezoid in cm.</returns>
+    public static double TrapezoidArea(int bottomBase, int topBase, int heigth)
+    {
+      return ((bottomBase + topBase) / 2) * heigth;
+    }
+
     /// <summary>
     /// Calculates the volume of an cylinder.
     /// </summary>

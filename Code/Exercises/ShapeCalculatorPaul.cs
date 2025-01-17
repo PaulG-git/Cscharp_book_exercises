@@ -85,7 +85,7 @@ namespace ShapeCalculator
       do
       {
         int width = NumberInputMethods.GetInputPositiveInt("Define the base of the triangle in cm: ");
-        int heigth = NumberInputMethods.GetInputPositiveInt("Define the heigth of the heigth in cm: ");
+        int heigth = NumberInputMethods.GetInputPositiveInt("Define the heigth of the triangle in cm: ");
         int angle = NumberInputMethods.GetInputPositiveInt("Define angle of the triangle between 1° and 90°: ", 90);
         
         double perimeter = ShapeCalculationMethods.TrianglePerimeter(width, heigth, angle);
@@ -133,7 +133,19 @@ namespace ShapeCalculator
     /// </summary>
     private static void Trapezoid()
     {
+      do
+      {
+        int bottomBase = NumberInputMethods.GetInputPositiveInt("Define the bottom (long) base of the trapezoid in cm: ");
+        int topBase = NumberInputMethods.GetInputPositiveInt("Define the top (short) base of the trapezoid in cm: ", bottomBase - 1);
+        int height = NumberInputMethods.GetInputPositiveInt("Define the height of the trapezoid in cm: ");
+        int minAngle = (int)ShapeCalculationMethods.AngleToDegrees(Math.Atan(height / (bottomBase - topBase))) + 1;
+        int angle = NumberInputMethods.GetInputPositiveInt($"Define angle of the trapezoid between {minAngle}° and 90°: ", 90, minAngle);
 
+        double perimeter = ShapeCalculationMethods.TrapezoidPerimeter(bottomBase, topBase, height, angle);
+        double area = ShapeCalculationMethods.TrapezoidArea(bottomBase, topBase, height);
+
+        Show2DResults(perimeter, area);
+      } while (ProgramMethods.UserAnswer.Item1);
     }
 
     /// <summary>
