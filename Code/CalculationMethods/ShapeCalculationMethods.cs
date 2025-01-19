@@ -1,29 +1,7 @@
-﻿using Exercises.UiMethods;
-
-namespace Exercises.CalculationMethods
+﻿namespace Exercises.CalculationMethods
 {
   internal class ShapeCalculationMethods
   {
-    /// <summary>
-    /// Converts given angle in degrees to angle in radians. 
-    /// </summary>
-    /// <param name="angle">Define the angle in degrees.</param>
-    /// <returns>Returns the angle in radians.</returns>
-    public static double AngleToRadians(double angle)
-    { 
-      return angle * (MathF.PI / 180);
-    }
-
-    /// <summary>
-    /// Converts given angle in radians to angle in degrees. 
-    /// </summary>
-    /// <param name="angle">Define the angle in radians.</param>
-    /// <returns>Returns the angle in radians.</returns>
-    public static double AngleToDegrees(double angle)
-    {
-      return angle * (180 / MathF.PI);
-    }
-
     /// <summary>
     /// Calculates the perimeter of an square.
     /// </summary>
@@ -75,7 +53,7 @@ namespace Exercises.CalculationMethods
     /// <returns>Returns the perimeter of defined triangle in cm.</returns>
     public static double TrianglePerimeter(int width, int height, int angle)
     {
-      double angleRadians = AngleToRadians(angle);
+      double angleRadians = MathMethods.AngleToRadians(angle);
       string bySideType;
       string byAngleType;
       double sideA;
@@ -194,9 +172,8 @@ namespace Exercises.CalculationMethods
     public static double TrapezoidPerimeter(int bottomBase, int topBase, int heigth, int angle)
     {
       string type;
-      double angleRadians = AngleToRadians(angle);
-      double sideLeft = heigth / Math.Sin(angleRadians);
-      double sideRight = Math.Sqrt(Math.Pow(bottomBase - topBase - (heigth / Math.Tan(angleRadians)), 2) + Math.Pow(heigth, 2));
+      double sideLeft = Trigonometrics.SOH_H(heigth, angle);
+      double sideRight = Math.Sqrt(Math.Pow(bottomBase - topBase - Trigonometrics.TOA_A(heigth, angle), 2) + Math.Pow(heigth, 2));
 
       if (angle == 90)
         type = "Right";
@@ -215,7 +192,6 @@ namespace Exercises.CalculationMethods
     /// <param name="topBase">Define top (short) base of the trapezoid.</param>
     /// <param name="bottomBase">Define bottom (long) base of the trapezoid.</param>
     /// <param name="heigth">Define height of the trapezoid.</param>
-    /// <param name="angle">Define the left sharp angle of the trapezoid.</param>
     /// <returns>Returns the area of defined trapezoid in cm.</returns>
     public static double TrapezoidArea(int bottomBase, int topBase, int heigth)
     {

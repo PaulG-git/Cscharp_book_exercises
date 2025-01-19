@@ -138,7 +138,7 @@ namespace ShapeCalculator
         int bottomBase = NumberInputMethods.GetInputPositiveInt("Define the bottom (long) base of the trapezoid in cm: ");
         int topBase = NumberInputMethods.GetInputPositiveInt("Define the top (short) base of the trapezoid in cm: ", bottomBase - 1);
         int height = NumberInputMethods.GetInputPositiveInt("Define the height of the trapezoid in cm: ");
-        int minAngle = (int)ShapeCalculationMethods.AngleToDegrees(Math.Atan(height / (bottomBase - topBase))) + 1;
+        int minAngle = (int)Trigonometrics.TOA_T(height, bottomBase - topBase) + 1;
         int angle = NumberInputMethods.GetInputPositiveInt($"Define angle of the trapezoid between {minAngle}° and 90°: ", 90, minAngle);
 
         double perimeter = ShapeCalculationMethods.TrapezoidPerimeter(bottomBase, topBase, height, angle);
@@ -157,8 +157,8 @@ namespace ShapeCalculator
       {
         int radius = NumberInputMethods.GetInputPositiveInt("Define the radius of the cylinder in cm: ");
         int height = NumberInputMethods.GetInputPositiveInt("Define the height of the cylinder in cm: ");
-        double surfaceArea = (double)ShapeCalculationMethods.CylinderSurfaceArea(radius, height);
-        double volume = (double)ShapeCalculationMethods.CylinderVolume(radius, height);
+        double surfaceArea = ShapeCalculationMethods.CylinderSurfaceArea(radius, height);
+        double volume = ShapeCalculationMethods.CylinderVolume(radius, height);
 
         ShowResults(surfaceArea, volume);
       } while (ProgramMethods.UserAnswer.Item1);
