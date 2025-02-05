@@ -38,7 +38,7 @@ namespace ShapePrinter
           Console.WriteLine(action.Key + ". " + action.Value.Item1);
         }
 
-        _shapes[ProgramMethods.CheckInput(_shapes.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
+        _shapes[ProgramMethods.CheckInputKey(_shapes.Count, "Wrong input. Please specify the shape that you want to draw: ")].Item2.Invoke();
       } while (ProgramMethods.UserAnswer.Item2);
     }
 

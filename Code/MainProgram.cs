@@ -6,6 +6,7 @@ using FizzBuzz;
 using ArrayReverse;
 using RecursionPractice;
 using RollDice;
+using Tic_Tac_Toe;
 
 namespace Exercises
 {
@@ -28,6 +29,7 @@ namespace Exercises
       {7, new (nameof(ArrayReverseClass), ArrayReverseClass.ArrayReverseMain)},
       {8, new (nameof(RecursionPracticeClass), RecursionPracticeClass.RecursionFibonacciSequenceMain)},
       {9, new (nameof(RollDiceClass), RollDiceClass.RollDiceMain)},
+      {10, new(nameof(Tic_Tac_ToeClass),Tic_Tac_ToeClass.Tic_Tac_ToeMain)},
       {0, new ("Exit program", ProgramMethods.ExitProgram)}
     };
     
@@ -38,15 +40,17 @@ namespace Exercises
     {
       while (true)
       {
-        Console.WriteLine("Which program do you want to run?");
+        Console.WriteLine("Which program do you want to run?\n");
+        
         foreach (var action in _actions)
         {
           if (action.Key == 0)
             Console.WriteLine();
           Console.WriteLine(action.Key + ". " + action.Value.Item1);
         }
-
-        _actions[ProgramMethods.CheckInput(_actions.Count, "Wrong input. Please specify the program that you want to run: ")].Item2.Invoke();
+        
+        Console.Write("\nType the number of the program and then hit 'ENTER': ");
+        _actions[ProgramMethods.CheckInputLine(_actions.Count - 1, "Wrong input. Please specify the program that you want to run, then hit 'ENTER': ")].Item2.Invoke();
       }
     }
   }

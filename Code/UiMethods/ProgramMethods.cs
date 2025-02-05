@@ -8,12 +8,12 @@
     public static (bool, bool) UserAnswer;
 
     /// <summary>
-    /// Asks user for input and checks specified conditions. Loops if wrong input is provided.
+    /// Asks user for input key and checks specified conditions. Loops if wrong input is provided.
     /// </summary>
     /// <param name="maxValue">Provide upper limit for acceptable input int.</param>
     /// <param name="promptIfWrong">Specify what text should be printed if provided answer is not an int.</param>
     /// <returns>Returns provided user input as int.</returns>
-    public static int CheckInput(int maxValue, string promptIfWrong)
+    public static int CheckInputKey(int maxValue, string promptIfWrong)
     {
       while (true)
       {
@@ -26,6 +26,30 @@
         else
         {
           ConsoleUIMethods.ClearCurrentConsoleLine();
+          Console.Write(promptIfWrong);
+        }
+      }
+    }
+
+    /// <summary>
+    /// Asks user for input line and checks specified conditions. Loops if wrong input is provided.
+    /// </summary>
+    /// <param name="maxValue">Provide upper limit for acceptable input int.</param>
+    /// <param name="promptIfWrong">Specify what text should be printed if provided answer is not an int.</param>
+    /// <returns>Returns provided user input as int.</returns>
+    public static int CheckInputLine(int maxValue, string promptIfWrong)
+    {
+      while (true)
+      {
+        string? answer = Console.ReadLine();
+        if (int.TryParse(answer, out int evaluatedAnswer) && evaluatedAnswer <= maxValue)
+        {
+          Console.Clear();
+          return evaluatedAnswer;
+        }
+        else
+        {
+          ConsoleUIMethods.ClearLastTwoLines();
           Console.Write(promptIfWrong);
         }
       }
